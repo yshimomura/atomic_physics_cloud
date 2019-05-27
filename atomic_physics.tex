@@ -1,0 +1,321 @@
+\documentclass[11pt,a4paper]{jsarticle}
+%
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{ascmac}
+\usepackage{ulem}
+\usepackage{url}
+\usepackage{braket}
+%
+\setlength{\textwidth}{\fullwidth}
+\setlength{\textheight}{39\baselineskip}
+\addtolength{\textheight}{\topskip}
+\setlength{\voffset}{-0.5in}
+\setlength{\headsep}{0.3in}
+%
+\newcommand{\divergence}{\mathrm{div}\,}  %ダイバージェンス
+\newcommand{\grad}{\mathrm{grad}\,}  %グラディエント
+\newcommand{\rot}{\mathrm{rot}\,}  %ローテーション
+%
+\pagestyle{myheadings}
+
+\begin{document}
+\title{原子物理学ノート}
+\author{下村 優輔}
+\date{\today}
+\maketitle
+%
+\section*{◆第1章 原子および原子エネルギー準位内の相互作用◆}
+\subsection*{1.4 水素の超微細構造とゼーマン効果}
+\paragraph{(a) 水素の基底状態におけるF$=$1とF$=$0超微細分裂を計算せよ\\}
+\subparagraph{電子(雲)が作る磁場}
+超微細構造分裂の原因は、原子核の磁気モーメントと電子(雲)が作る磁場との相互作用によって生じると考えられる。始めに、電子(雲)によって作られる磁場を考える。これは電磁気学において、面密度$\sigma$で電荷が分布している半径$a$の球体が角速度$\omega$で回転している時の磁場の計算と同様である。
+円筒座標$\bigl(r,\theta,z\bigr)$を用いて、球体を帯状に分解してそれらが作る磁場を考える。ある地点$p=\bigl(a,\theta,a\sin\theta\bigr)$の電流を求める。電流は単位時間あたりに通過する電荷量なので、高さ$ad\theta$の帯が、単位時間あたりの長さ$a\sin\theta\omega$を通過する。よって、この地点の電流$I$は
+\begin{equation}
+  \label{current}
+  I = \sigma\omega a^{2} \sin\theta d\theta
+\end{equation}
+である。
+ここでビオサバールの法則より電流素片$dS$が球体の中心に作り出す磁場の大きさ$d\bm{B}$は
+\begin{equation}
+  d\bm{B} = \frac{\mu_0}{4\pi} \frac{I d\bm{S} \times \bm{r}}{r^{3}}
+\end{equation}
+である。続いて、この電流素片$dS$を帯の円周上で成分して、帯全体が球体の中心に作り出す磁場$B'$を求める。しかし、その前に$d\bm{B}$を動径方向と球体の回転軸方向とに分解すると、周回積分をした時には回転軸方向の成分しか残らないことに注意する。すなわち、周回積分して意味がある成分$dB_\bot$は
+\begin{eqnarray}
+  dB_\bot&=& \frac{\mu_0}{4\pi} \frac{|d\bm{S} \times \frac{\bm{r}}{r}|}{r^2} \sin\theta \\
+  &=& \frac{\mu_0}{4\pi} \frac{IdS \sin\bigl(\frac{\pi}{2}\bigr)}{r^2}\sin\theta\\
+  &=& \frac{\mu_0}{4\pi} \frac{IdS}{r^2} \sin\theta
+\end{eqnarray}
+である。よって、$dB_\bot$を$2\pi a\sin\theta$の周回上で積分して、帯電流が球体の中心に作る磁場$B'$を求めると以下のようになる。
+\begin{eqnarray}
+  B' &=& \oint dB_\bot \\
+  &=& \frac{\mu_0}{4\pi} \oint \frac{I dS \sin\theta}{a^{2}} \\
+  &=& \frac{\mu_0}{4\pi} \frac{I\sin\theta}{a^{2}} 2\pi a \sin\theta \\
+  &=& \frac{\mu_0}{2} \frac{I \sin^2\theta}{a}
+\end{eqnarray}
+ここで、(\ref{current})式より電流$I$の値を代入すると
+\begin{eqnarray}
+  B' &=& \frac{\mu_0}{2}  \frac{\bigl( \sigma\omega a^{2} \sin\theta d\theta \bigr)\sin^2\theta}{a}\\
+   &=& \frac{\mu_0}{2} \sigma a \omega \sin^{3}\theta d\theta
+\end{eqnarray}
+と求められる。
+
+次に、帯電流$B'$を$\theta$全域で積分して、荷電した回転球体が球体の中心に作る磁場$B$を求める。
+\begin{equation}
+  B = \int_0^\pi B' = \frac{\mu_0}{2}\sigma a \omega\int_0^\pi \sin^{3}\theta d\theta
+\end{equation}
+
+ここで、$t=\cos\theta$と置換する。
+\begin{eqnarray}
+  B &=& \frac{\mu_0}{2}\sigma a \omega　\int_0^\pi \bigl( 1-\sin^2 \theta \bigr) \bigl(\sin \theta d\theta \bigr)\\
+  &=& \frac{\mu_0}{2}\sigma a \omega　\int_1^{-1} \bigl( 1-t^2 \bigr) \bigl(-dt\bigr)\\
+  &=& \frac{\mu_0}{2}\sigma a \omega　\int_{-1}^1 \bigl( 1-t^2 \bigr) dt\\
+  &=& \frac{\mu_0}{2}\sigma a \omega　\Bigl[t-\frac{1}{3}t^3\Bigr]_{-1}^1 \\
+  &=& \frac{\mu_0}{2}\sigma a \omega \frac{4}{3}\\
+  &=& \frac{2}{3}\mu_0 \sigma a \omega
+\end{eqnarray}
+以上より、電子雲が中心に作る磁場$B$は$\frac{2}{3}\mu_0 \sigma a \omega$と求められる。
+\sout{テキストはcgs単位系なので\\$\mu_0 = 4\pi$、磁化$M$を用いて$M=\sigma a \omega$として、}
+\\
+(4/24訂正)ここで、テキストはcgs単位系なので$\mu_0 = 1$であり、定義より外部磁場を$\bm{H}$、磁束密度を$\bm{B}$、磁化を$\bm{M}$と置いた時
+\begin{equation}
+  \bm{H} = \bm{B} - 4\pi\bm{M}
+\end{equation}
+と定義される。今、外部磁場$\bm{H}=0$なので$\bm{B} = 4\pi \bm{M}$が(cgs単位系で)成り立つ。以上より、$4 \pi M=\sigma a \omega$として、
+\begin{equation}
+  B = \frac{8}{3} \pi M
+\end{equation}
+と表すことができる。
+
+\subparagraph{核磁気モーメントと電子(雲)が作る磁場の相互作用}
+陽子の磁気モーメント$\bm{\mu_p}$と電子雲が陽子の位置に作る磁場$\bm{B}$の相互作用によるエネルギー$E$は
+\begin{eqnarray}
+  E &=& - \bm{\mu_p} \cdot \bm{B}\\
+  &=& - g_p \mu_N \bm{I} \cdot \frac{2}{3}\mu_0 \bigl(-g_e \mu_B \bm{S} |\psi_{100}| \bigr)\\
+  &=& \frac{2}{3}\mu_0 g_p g_e \mu_N \mu_B |\psi_{100}| \bm{I} \cdot \bm{S}
+\end{eqnarray}
+ごちゃごちゃ計算したが、超微細構造分裂の起源は電子(雲)の作る磁場と核磁気モーメントの相互作用によって生じることを覚えておけばいいと思う。
+
+\begin{boxnote}
+  \subsection*{角運動量と磁気モーメント}
+
+  始めに断っておくと、ここからの記述はほとんどの人には読む価値はない。
+
+  鳥井さんの原子物理学スライド(\url{http://atom.c.u-tokyo.ac.jp/torii/atomic_phys_I_2012.pdf})における磁気モーメントの頁では、
+  電子の軌道角運動量で生じる磁気モーメント$\bm{\mu}$は以下のように表される。
+  \begin{equation}
+    \bm{\mu} = g_e \mu_B \frac{\bm{L}}{\hbar}
+  \end{equation}
+  ここで、$g_e$は$g$因子、$\mu_B$はボーア磁子、$\bm{L}$は電子の軌道角運動量である。
+
+  さて、電子の軌道角運動量で生じる磁気モーメントには以下のような表し方もある。
+  \begin{equation}
+    \bm{\mu} = g_e \mu_B \bm{L'}
+  \end{equation}
+  上式の$\bm{L'}$は軌道角運動量ではなく、電子の方位量子数である。テキストによって、電子の軌道角運動量、方位量子数の表し方が異なっている。そのため、磁気モーメントの値は$\hbar$で割るのか、割らないのかが筆者の疑問であった。結論は、先の数式で示したように、ボーア磁子に角運動量を掛けた場合は$\hbar$で割り、量子数を掛けた場合は$\hbar$で割らない。では、次にこの結論に至った磁気モーメントの起源を説明する。
+
+  始めに、古典電磁気学から磁気モーメントを導出する。半径$r$の円周上を電荷$e$の電子が回っている時に円の中心に作られる磁気モーメントを求める。電子が速度$\bm{v}$で円周上を回っていたとすると、電流$I$は
+  \begin{equation}
+    I = \frac{ev}{2 \pi r}
+  \end{equation}
+  である。これに円の面積$S$を掛けると、磁気モーメント$\mu$は以下のように表される。
+  \begin{eqnarray}
+    \mu &=& IS\\
+    &=&  \frac{ev}{2 \pi r} \pi r^2\\
+    &=&  \frac{evr}{2}
+  \end{eqnarray}
+  さて、ここで電子の角速度$\omega$を導入すると、$v = r\omega$より
+  \begin{equation}
+    \mu = \frac{er^2 \omega}{2}
+  \end{equation}
+  となる。さらに、角運動量$\bm{L}=\bm{r} \times \bm{p}$より、今この状況で角運動量の大きさは$|\bm{L}|=m r^2 \omega$と表される。以上より、円周上を回転する電子の磁気モーメントは
+  \begin{equation}
+    \mu = \frac{e m r^2 \omega}{2m} = \frac{e}{2m} |\bm{L}|
+  \end{equation}
+  である。この結果を量子論に当てはめる。量子論における角運動量は$\hbar$単位で表され、軌道角運動量の大きさ$|\bm{L}|$は方位量子数$l$を用いて、$|\bm{L}|=\hbar l$と表される。
+\end{boxnote}
+\clearpage
+\begin{boxnote}
+  以上より、量子化された磁気モーメントは
+  \begin{eqnarray}
+    \mu &=& \frac{e \hbar}{2m} \frac{|\bm{L}|}{\hbar}~~~~(\bm{L}は角運動量)\\
+    &=& \frac{e \hbar}{2m} \frac{\hbar l}{\hbar}\\
+    &=& \frac{e \hbar}{2m} l~~~~(lは方位量子数)
+  \end{eqnarray}
+  と表される。
+
+  今回は磁気モーメントをスカラーで表現したが、別にベクトル表記でも問題ない。
+
+  なお新たな疑問として、$\bm{L}$を方位量子数で表すとしたら、その固有値を用いて
+  \begin{equation}
+    |\bm{L}| = \hbar \sqrt{l \bigl(l + 1\bigr)}
+  \end{equation}
+  を用いるのが適切ではないかと思うようになった。これはまた後ほど解決したらメモに残す。
+\end{boxnote}
+
+%\clearpage
+
+\paragraph{(b) 水素の基底状態のゼーマン効果\\}
+\subparagraph{水素基底状態のハミルトニアン}
+超微細構造のハミルトニアン$H_{hf}$とゼーマン分裂のハミルトニアン$H_{zeeman}$の和が、磁場$\bm{B_{ext}}$の中にある水素のハミルトニアンを表す。
+\begin{eqnarray}
+  H &=& H_{hf} + H_{zeeman}\\
+  &=& \alpha \bm{I} \cdot \bm{S} + 2 \mu_B \bm{S} \cdot \bm{B_{ext}}
+\end{eqnarray}
+$\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\bm{I}+\bm{S}$)を用いて
+\begin{eqnarray}
+  |\bm{F}|^2 &=& |\bm{I}|^2 + |\bm{S}|^2 + 2\bm{I} \cdot \bm{S}\\
+  \bm{I} \cdot \bm{S} &=& \frac{1}{2} \bigl( |\bm{F}|^2 - |\bm{I}|^2 - |\bm{S}|^2 \bigr)\\
+  \bm{I} \cdot \bm{S} &=& \frac{1}{2} \bigl\{ F\bigl(F+1\bigr) - I\bigl(I+1\bigr) - S\bigl(S+1\bigr) \bigr\}
+\end{eqnarray}
+
+\subparagraph{状態ベクトルの記述}
+ここで、水素の状態ベクトルを考える。水素のハミルトニアンと(固有)状態ベクトルが定まれば、固有エネルギーを求めることができる。
+固有状態を定めるのは、水素の全角運動量$F$とその方位量子数$m_F$の２つである。この２つの組み合わせから以下の4つの状態がある。
+\begin{equation}
+  \ket{F,m_F} = \ket{1,1}, \ket{1,0}, \ket{1,-1}, \ket{0,0}\\
+\end{equation}
+これらの状態を核子(陽子)のスピン$\ket{~}_I$と電子のスピン$\ket{~}_S$で固有状態を記述すると以下のようになる。
+\begin{eqnarray}
+  \ket{1,1} &=& \ket{\uparrow}_I \ket{\uparrow}_S \\
+  \ket{1,0} &=& \frac{1}{\sqrt{2}}\bigl( \ket{\uparrow}_I \ket{\downarrow}_S + \ket{\downarrow}_I \ket{\uparrow}_S \bigr) \\
+  \ket{1,-1} &=& \ket{\downarrow}_I \ket{\downarrow}_S \\
+  \ket{0,0} &=& \frac{1}{\sqrt{2}}\bigl( \ket{\uparrow}_I \ket{\downarrow}_S - \ket{\downarrow}_I \ket{\uparrow}_S \bigr)
+\end{eqnarray}
+この固有状態の表し方の詳細は、メモで述べる(予定)。
+
+超微細分裂のハミルトニアン$H_{hf}$は式(40)より、
+\begin{equation}
+  H_{hf} = \frac{\alpha}{2} \bigl\{ F\bigl(F+1\bigr) - I\bigl(I+1\bigr) - S\bigl(S+1\bigr) \bigr\}\\
+\end{equation}
+と表される。ここに全角運動量$F$と方位量子数$m_F$の値から判定できる$I,S$の値を計算すれば、各状態の$H_{hf}$が求まる。
+\\
+\subparagraph{ゼーマン効果のハミルトニアン}
+また、ゼーマン分裂のハミルトニアン$H_{zeeman}$は式(42)$\sim$(45)の核子、電子のスピンで記述した状態を用いて計算すれば求めることができる。
+\begin{eqnarray}
+  \hat{H} &=& 2 \mu_B \bm{S} \cdot \bm{B_{ext}}\\
+  \hat{H} &=& 2 \mu_B S_z B_{ext}
+\end{eqnarray}
+ゼーマン効果のハミルトニアンは$S_z$があることより、奇のパリティを持つ演算子になる。よって、このハミルトニアンはパリティが反転した状態同士を作用した時0でない値が得られる。$m_F=0$の2つの状態はパリティが反転しているので、この2つの状態間でゼーマン効果が生じる。
+(この時の計算でゼーマン効果は電子スピンの項にだけ作用することに注意する)
+
+以上より$\ket{F,m_F}$で表された4つの状態のハミルトニアンの行列成分は次のようになる。
+
+\[
+\begin{array}{cccc}
+ ~~~\ket{1,1}~~ & \ket{1,-1}~~ & \ket{1,0}~~ & \ket{0,0}\\
+\end{array}
+\]
+\[
+\left(
+\begin{array}{cccc}
+　\frac{\alpha}{4}+\mu_B B & 0 & 0 & 0 \\
+　0 & \frac{\alpha}{4}-\mu_B B & 0 & 0 \\
+　0 & 0 & \frac{\alpha}{4} & \mu_B B \\
+　0 & 0 & \mu_B B & -\frac{3\alpha}{4}
+\end{array}
+\right)
+\]
+\\
+固有状態のシュレディンガー方程式は固有エネルギー$E$を用いて
+\begin{eqnarray}
+  &\hat{H}& \ket{F,m_F} = E\ket{F,m_F}\\
+  \nonumber\\
+  \bigl(&\hat{H}&-E\bm{\lambda}\bigr)\ket{F,m_F} = 0
+\end{eqnarray}
+と表せる。なお$\bm{\lambda}$は単位行列を表す。あとは、ブロック毎に行列式を解くことで、固有エネルギー$E$を求めることができる。
+以下、テキスト通りである。
+\\
+\\
+
+%\subsection*{補足}
+%水素原子の陽子、電子のスピンについて全角運動量$J$と方位量子数$M_F$の関係について図1に示した。感覚的に$\ket{0,0}$のパリティが奇であることなどが分かるようになっていると思う。
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[clip,width=90mm]{spin.pdf}
+%  \caption{$\frac{1}{2}$スピン系の$J,M_F$のイメージ} %タイトルをつける
+%\end{figure}
+
+\clearpage
+
+\begin{boxnote}
+  \subsection*{はしご演算子(昇降演算子)}
+  水素原子の固有状態を記述する時、全角運動量と磁気量子数のペア、あるいは陽子と電子のスピンのペアで表していた。
+  この固有状態の２つ表し方を対応させる時に、はしご演算子(昇降演算子)が活躍する。
+  はしご演算子を固有ケットに作用させることで、状態を1単位上げる、あるいは下げることができる。
+  角運動量演算子$\hat{J}_i$($i$は$x,y,z$を表す)と
+  \begin{equation}
+    \hat{\bm{J}^2} = \hat{J}_x \hat{J}_x + \hat{J}_y \hat{J}_y + \hat{J}_z \hat{J}_z
+  \end{equation}
+  で定義する新しい演算子を導入する。この演算子は
+  \begin{equation}
+    \bigl[\hat{\bm{J}^2},\hat{J}_i\bigr] = 0
+  \end{equation}
+  という交換関係が成り立つ。ここで、$\hat{\bm{J}^2}$と$\hat{J}_i$の同時固有状態を考える。それぞれの固有値を$a,b$とする。
+  \begin{eqnarray}
+    \hat{\bm{J}^2} \ket{a,b} &=& a \ket{a,b}\\
+    \hat{J}_i \ket{a,b} &=& b \ket{a,b}
+  \end{eqnarray}
+　ここでさらに、はしご演算子を定義する。
+ \begin{equation}
+   \hat{J}_\pm = \hat{J}_x \pm i \hat{J}_y
+ \end{equation}
+ はしご演算子は
+ \begin{eqnarray}
+   \bigl[\hat{\bm{J}^2},\hat{J}_\pm \bigr] &=& 0 \\
+   \bigl[\hat{J}_z,\hat{J}_\pm \bigr] &=& \pm \hbar \hat{J}_\pm \\
+   \bigl[\hat{J}_+,\hat{J}_- \bigr] &=& 2 \hbar \hat{J}_z
+ \end{eqnarray}
+ の交換関係を満たす。
+ 以上より、
+ \begin{eqnarray}
+   \hat{J}_z \bigl( \hat{J}_\pm \ket{a,b} \bigr) &=& \bigl( \bigl[\hat{J}_z,\hat{J}_\pm \bigr] + \hat{J}_\pm \hat{J}_z \bigr)\ket{a,b} \\
+   &=& \bigl( \pm \hbar \hat{J}_\pm + \hat{J}_\pm \hat{J}_z \bigr)\ket{a,b}\\
+   &=& \bigl( \pm \hbar  +  \hat{J}_z \bigr)\hat{J}_\pm \ket{a,b}\\
+   &=& \bigl( \pm \hbar  +  b \bigr)\hat{J}_\pm \ket{a,b}
+ \end{eqnarray}
+ 上式の結果から、以下のように表すことができる。
+ \begin{equation}
+   \hat{J}_\pm \ket{a,b}　= \ket{a,b\pm1}
+ \end{equation}
+ 以上から、はしご演算子は角運動量の状態を$\pm1$変化させる演算子であることが分かる。
+\\
+\\
+\end{boxnote}
+
+\clearpage
+
+\begin{boxnote}
+  さて、このはしご演算子を用いて水素基底状態を陽子と電子のスピンで記述することを考える。
+  まず、陽子および電子がup方向に向いている
+  \begin{equation}
+    \ket{\uparrow \uparrow}\\
+  \end{equation}
+  を基準とする。これに、はしご演算子
+  \begin{align}
+    \hat{J}_- = \hat{J_p}_- + \hat{J_e}_-
+  \end{align}
+  \rightline{(*$\hat{J_p}$は陽子のはしご演算子、$\hat{J_e}$は陽子の演算子)}
+  を作用させると
+  \begin{equation}
+    \hat{J}_- \ket{\uparrow \uparrow} = \sqrt{2} \bigl\{ \ket{\downarrow \uparrow} + \ket{\uparrow \downarrow} \bigr\}\\
+  \end{equation}
+  ここで規格化して
+  \begin{equation}
+    \hat{J}_- \ket{\uparrow \uparrow} = \frac{1}{\sqrt{2}} \bigl\{ \ket{\downarrow \uparrow} + \ket{\uparrow \downarrow} \bigr\}\\
+  \end{equation}
+  となる。この右辺の全角運動量は1である。また、さらにはしご演算子を作用させて規格化すると(陽子および電子のスピンは$\pm\frac{1}{2}$の値しか取れないことに注意すれば)
+  \begin{equation}
+    \hat{J}_- \frac{1}{\sqrt{2}} \bigl\{ \ket{\downarrow \uparrow} + \ket{\uparrow \downarrow} \bigr\} = \ket{\downarrow \downarrow}\\
+  \end{equation}
+  となる。これも全角運動量は1である。
+
+  以上のようにして、はしご演算子を用いてスピンによる状態の記述を行った。
+\end{boxnote}
+
+\subsection*{1.6 ジオニウム}
+ぺニングトラップで束縛された電子(陽電子)についての項目。\\
+\paragraph{(a) z方向の振動\\}
+
+\end{document}
