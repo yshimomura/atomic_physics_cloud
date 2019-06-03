@@ -321,7 +321,40 @@ $\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\
   \Phi = N \bigl(x^2 + y^2 -2z^2 \bigr)\\
 \end{equation}
 と表される四重極電場である。この四重極電場に加えて、一定磁場を$z$方向に印加してあるのがぺニングトラップである。
-\paragraph{(a) z方向の振動\\}
-単純にある電場中の単振動の式として表される。
+今回は(a)を省略し、(b)からのメモを残す。(b)では磁場中の荷電粒子のハミルトニアンが与えられているが、まずはその導出から始める。
+\paragraph{(b) 荷電粒子のハミルトニアン\\}
+磁場中の荷電粒子のハミルトニアン導出は、(1)スカラーおよびベクトルポテンシャルを用いたラグランジアンの記述、(2)ラグランジアンから正準運動量を求め、ハミルトニアンを導く、という2つのステップで行う。
+
+まず、電場$\bm{E}$および磁場$\bm{B}$の中を運動する電荷$q$、質量$m$の粒子に加わる力$F$は以下のように表される。
+\begin{equation}
+  \bm{F} = q\bigl( \bm{E} + \bm{v} \times \bm{B} \bigr)\\
+\end{equation}
+なお、$\bm{v}$は粒子の速度である。
+この方程式をポテンシャルを用いて表すことで、ラグランジアンを使って解くことができる。そこで、静電ポテンシャル$\phi$およびベクトルポテンシャル$\bm{A}$を使うと、電場$\bm{E}$と磁場$\bm{B}$は以下のようになる。
+\begin{eqnarray}
+  \bm{E} &=& - \nabla \phi - \frac{\partial \bm{A}}{\partial t} \\
+  \bm{B} &=& \nabla \times \bm{A}
+\end{eqnarray}
+粒子に加わる力を表した方程式に、上式を純粋に代入する。
+\begin{eqnarray}
+  \bm{F} &=& q\bigl\{ -\frac{\partial \bm{A}}{\partial t} - \nabla \phi + \bm{v} \times \bigl( \nabla \times \bm{A} \bigr) \bigr\}\\
+  \bm{F} &=& q\bigl\{ -\frac{\partial \bm{A}}{\partial t} - \nabla \phi + \nabla \bigl( \bm{v} \cdot \bm{A} \bigr) - \bigl( \bm{v} \cdot \nabla \bigr)\bm{A}\bigr\}\\
+  \bm{F} &=& q\bigl\{ -\nabla \bigl( \phi - \bm{v} \cdot \bm{A} \bigr) - \frac{\partial \bm{A}}{\partial t} - \bigl( \bm{v} \cdot \nabla \bigr)\bm{A}\bigr\}
+\end{eqnarray}
+ここで、ベクトルポテンシャルの全微分から
+\begin{eqnarray}
+  d \bm{A} &=& \frac{\partial \bm{A}}{\partial \bm{r}} d \bm{r} + \frac{\partial \bm{A}}{\partial t} dt\\
+  \frac{d \bm{A}}{dt} &=& \frac{\partial \bm{A}}{\partial \bm{r}} \frac{d \bm{r}}{dt} + \frac{\partial \bm{A}}{\partial t}\\
+  \frac{d \bm{A}}{dt} &=& \bigl(\bm{v} \cdot \nabla \bigr)\bm{A} + \frac{\partial \bm{A}}{\partial t}
+\end{eqnarray}
+よって、
+\begin{equation}
+  \bm{F} = q\bigl\{ -\nabla \bigl( \phi - \bm{v} \cdot \bm{A} \bigr) -\frac{d \bm{A}}{dt} \bigr\}\\
+\end{equation}
+次に、ラグランジアン$\it{L}$を用いたオイラーの方程式は
+\begin{equation}
+  \frac{d}{dt}\bigl( \frac{\partial \it{L}}{\partial \dot{q}} \bigr) - \frac{\partial \it{L}}{\partial q} = 0\\
+\end{equation}
+と表される。
 
 \end{document}
