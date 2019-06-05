@@ -236,8 +236,7 @@ $\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\
 %  \includegraphics[clip,width=90mm]{spin.pdf}
 %  \caption{$\frac{1}{2}$スピン系の$J,M_F$のイメージ} %タイトルをつける
 %\end{figure}
-
-\clearpage
+%\clearpage
 
 \begin{boxnote}
   \subsection*{はしご演算子(昇降演算子)}
@@ -321,9 +320,18 @@ $\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\
   \Phi = N \bigl(x^2 + y^2 -2z^2 \bigr)\\
 \end{equation}
 と表される四重極電場である。この四重極電場に加えて、一定磁場を$z$方向に印加してあるのがぺニングトラップである。
-今回は(a)を省略し、(b)からのメモを残す。(b)では磁場中の荷電粒子のハミルトニアンが与えられているが、まずはその導出から始める。
-\paragraph{(b) 荷電粒子のハミルトニアン\\}
-磁場中の荷電粒子のハミルトニアン導出は、(1)スカラーおよびベクトルポテンシャルを用いたラグランジアンの記述、(2)ラグランジアンから正準運動量を求め、ハミルトニアンを導く、という2つのステップで行う。
+今回は(a)を省略し、(b)からのメモを残す。
+(b)では磁場中の荷電粒子のハミルトニアンが与えられているが、まずはその導出から始める。
+
+\paragraph{(b) 荷電粒子のハミルトニアン}
+\subparagraph{ベクトルポテンシャル宣言}
+初めに、私が思うベクトルポテンシャルの利点を述べる。それは、電磁気力による力$F$がポテンシャルの勾配で表すことができると、電磁気学をハミルトニアンやラグランジアンで記述することができる。ニュートン方程式を用いて電磁気力が絡んだ運動を記述することはもちろんできるが、それらをポテンシャルで表現することで、ラグランジアンやハミルトニアンによって簡潔な形、座標系によらない記述を行うことができる。
+そして、電磁気学を解析力学的に記述することによって、相対論への導入がスムーズに行える(本当か？)
+
+以上の点を心に留めながらベクトルポテンシャルと付き合っていくことを宣言する。
+\\
+\subparagraph{ポテンシャルを用いた電磁気力の記述}
+さて、電磁場中の荷電粒子のハミルトニアン導出は、(1)スカラーおよびベクトルポテンシャルを用いたラグランジアンの記述、(2)ラグランジアンから正準運動量を求めハミルトニアンを導く、という2つのステップで行う。
 
 まず、電場$\bm{E}$および磁場$\bm{B}$の中を運動する電荷$q$、質量$m$の粒子に加わる力$F$は以下のように表される。
 \begin{equation}
@@ -347,14 +355,61 @@ $\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\
   \frac{d \bm{A}}{dt} &=& \frac{\partial \bm{A}}{\partial \bm{r}} \frac{d \bm{r}}{dt} + \frac{\partial \bm{A}}{\partial t}\\
   \frac{d \bm{A}}{dt} &=& \bigl(\bm{v} \cdot \nabla \bigr)\bm{A} + \frac{\partial \bm{A}}{\partial t}
 \end{eqnarray}
-よって、
+よって、力$F$はポテンシャル$\phi$、$\bm{A}$を用いて以下のように表される。
 \begin{equation}
   \bm{F} = q\bigl\{ -\nabla \bigl( \phi - \bm{v} \cdot \bm{A} \bigr) -\frac{d \bm{A}}{dt} \bigr\}\\
 \end{equation}
-次に、ラグランジアン$\it{L}$を用いたオイラーの方程式は
+
+改めて最初の目的に立ち返ると、あるポテンシャル$U$を使うことでラグランジアンで運動を記述することが目的であった。
+そこで、次に計算を簡単に行うために$\phi$、$\bm{A}$を1つにまとめたポテンシャルを考える。
+%\begin{equation}
+%  F = - \frac{\partial U}{\partial \bm{r}}\\
+%\end{equation}
+%と表すことができる。
+
+ラグランジアン$\it{L}$を運動方程式は
 \begin{equation}
-  \frac{d}{dt}\bigl( \frac{\partial \it{L}}{\partial \dot{q}} \bigr) - \frac{\partial \it{L}}{\partial q} = 0\\
+  \frac{d}{dt}\Bigl( \frac{\partial \it{L}}{\partial \dot{q}} \Bigr) - \frac{\partial \it{L}}{\partial q} = 0\\
 \end{equation}
 と表される。
+ここで、ラグランジアン$\it{L}$を運動エネルギー$T$とポテンシャルエネルギー$U$を使って$\it{L}=T-U$と表す。
+\begin{eqnarray}
+  \frac{d}{dt} \Bigl\{ \frac{\partial \bigl(T-U\bigr)}{\partial \dot{q}} \Bigr\} - \frac{\partial \Bigl(T-U\Bigr)}{\partial q} &=& 0
+  \\
+  \nonumber\\
+   \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{q}} - \frac{\partial U}{\partial \dot{q}} \Bigr) - \Bigl( \frac{\partial T}{\partial q} - \frac{\partial U}{\partial q} \Bigr) &=& 0
+\end{eqnarray}
+運動エネルギー$T$は変位$q$を陽に含まないので
+\begin{equation}
+  \frac{\partial T}{\partial q} = 0\\
+\end{equation}
+が成り立つ。また、今回は電磁気力に速度に依存する項目があるため、ポテンシャルは速度を陽に含んでいると考えられる。
+以上より、
+\begin{eqnarray}
+    \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{q}} \Bigr) - \frac{d}{dt} \Bigl( \frac{\partial U}{\partial \dot{q}} \Bigr) + \frac{\partial U}{\partial q} = 0
+    \\
+    \nonumber\\
+    \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{q}} \Bigr) = \frac{d}{dt} \Bigl( \frac{\partial U}{\partial \dot{q}} \Bigr) - \frac{\partial U}{\partial q}
+\end{eqnarray}
+という運動方程式が成り立つ。この時の左辺と(79)式を比較すると、ポテンシャル$U$として
+\begin{equation}
+  U = q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr)
+\end{equation}
+が得られる。(実際に上式を(85)式代入すると(79)式が得られる)
+
+以上より、ラグランジアン$\it{L}$は以下のようになる。
+\begin{equation}
+  L = \frac{1}{2} m v^2 - q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr) \\
+\end{equation}
+
+そして、運動量$p$は以下のように求まる。
+\begin{equation}
+  p = \frac{\partial L}{\partial \dot{q}} = mv + q \bm{A}\\
+\end{equation}
+これを使って、ハミルトニアン$H$を表すと
+\begin{eqnarray}
+  H &=& \frac{1}{2m} \bigl( mv \bigr)^2 + q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr) \\
+  H &=& \frac{1}{2m} \bigl( p - q\bm{A} \bigr)^2 + q \phi
+\end{eqnarray}
 
 \end{document}
