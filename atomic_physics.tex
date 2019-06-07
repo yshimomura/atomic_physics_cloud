@@ -357,7 +357,7 @@ $\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\
 \end{eqnarray}
 よって、力$F$はポテンシャル$\phi$、$\bm{A}$を用いて以下のように表される。
 \begin{equation}
-  \bm{F} = q\bigl\{ -\nabla \bigl( \phi - \bm{v} \cdot \bm{A} \bigr) -\frac{d \bm{A}}{dt} \bigr\}\\
+  \bm{F} = q\Bigl\{ -\nabla \bigl( \phi - \bm{v} \cdot \bm{A} \bigr) -\frac{d \bm{A}}{dt} \Bigr\}\\
 \end{equation}
 
 改めて最初の目的に立ち返ると、あるポテンシャル$U$を使うことでラグランジアンで運動を記述することが目的であった。
@@ -369,27 +369,27 @@ $\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\
 
 ラグランジアン$\it{L}$を運動方程式は
 \begin{equation}
-  \frac{d}{dt}\Bigl( \frac{\partial \it{L}}{\partial \dot{q}} \Bigr) - \frac{\partial \it{L}}{\partial q} = 0\\
+  \frac{d}{dt}\Bigl( \frac{\partial \it{L}}{\partial \dot{r}} \Bigr) - \frac{\partial \it{L}}{\partial r} = 0\\
 \end{equation}
 と表される。
 ここで、ラグランジアン$\it{L}$を運動エネルギー$T$とポテンシャルエネルギー$U$を使って$\it{L}=T-U$と表す。
 \begin{eqnarray}
-  \frac{d}{dt} \Bigl\{ \frac{\partial \bigl(T-U\bigr)}{\partial \dot{q}} \Bigr\} - \frac{\partial \Bigl(T-U\Bigr)}{\partial q} &=& 0
+  \frac{d}{dt} \Bigl\{ \frac{\partial \bigl(T-U\bigr)}{\partial \dot{r}} \Bigr\} - \frac{\partial \Bigl(T-U\Bigr)}{\partial r} &=& 0
   \\
   \nonumber\\
-   \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{q}} - \frac{\partial U}{\partial \dot{q}} \Bigr) - \Bigl( \frac{\partial T}{\partial q} - \frac{\partial U}{\partial q} \Bigr) &=& 0
+   \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{r}} - \frac{\partial U}{\partial \dot{r}} \Bigr) - \Bigl( \frac{\partial T}{\partial r} - \frac{\partial U}{\partial r} \Bigr) &=& 0
 \end{eqnarray}
 運動エネルギー$T$は変位$q$を陽に含まないので
 \begin{equation}
-  \frac{\partial T}{\partial q} = 0\\
+  \frac{\partial T}{\partial r} = 0\\
 \end{equation}
 が成り立つ。また、今回は電磁気力に速度に依存する項目があるため、ポテンシャルは速度を陽に含んでいると考えられる。
 以上より、
 \begin{eqnarray}
-    \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{q}} \Bigr) - \frac{d}{dt} \Bigl( \frac{\partial U}{\partial \dot{q}} \Bigr) + \frac{\partial U}{\partial q} = 0
+    \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{r}} \Bigr) - \frac{d}{dt} \Bigl( \frac{\partial U}{\partial \dot{r}} \Bigr) + \frac{\partial U}{\partial r} = 0
     \\
     \nonumber\\
-    \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{q}} \Bigr) = \frac{d}{dt} \Bigl( \frac{\partial U}{\partial \dot{q}} \Bigr) - \frac{\partial U}{\partial q}
+    \frac{d}{dt} \Bigl( \frac{\partial T}{\partial \dot{r}} \Bigr) = \frac{d}{dt} \Bigl( \frac{\partial U}{\partial \dot{r}} \Bigr) - \frac{\partial U}{\partial r}
 \end{eqnarray}
 という運動方程式が成り立つ。この時の左辺と(79)式を比較すると、ポテンシャル$U$として
 \begin{equation}
@@ -402,14 +402,31 @@ $\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\
   L = \frac{1}{2} m v^2 - q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr) \\
 \end{equation}
 
-そして、運動量$p$は以下のように求まる。
+そして、共役な運動量$p$は以下のように求まる。
 \begin{equation}
-  p = \frac{\partial L}{\partial \dot{q}} = mv + q \bm{A}\\
+  p = \frac{\partial L}{\partial \dot{r}} = mv + q \bm{A}\\
+\end{equation}
+ハミルトニアン$H$は
+\begin{equation}
+  H = \bm{p} \cdot \bm{\dot{r}} - L
 \end{equation}
 これを使って、ハミルトニアン$H$を表すと
 \begin{eqnarray}
-  H &=& \frac{1}{2m} \bigl( mv \bigr)^2 + q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr) \\
-  H &=& \frac{1}{2m} \bigl( p - q\bm{A} \bigr)^2 + q \phi
+  H &=& \bigl( mv + q \bm{A} \bigr) \cdot \bm{v} - \frac{1}{2} m v^2 + q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr)
+  \\
+  H &=& \bigl( mv^2 + q \bm{v} \cdot \bm{A} \bigr) - \frac{1}{2} m v^2 + q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr)
+  \\
+  H &=& \frac{1}{2} m v^2 +  q \phi
+  \\
+  H &=& \frac{1}{2m} \Bigl( p - q \bm{A} \Bigr)^2 +  q \phi
 \end{eqnarray}
+このように、荷電粒子のハミルトニアンを求めることができた。
+
+さて、長々とハミルトニアンを導出してきたが、ここからが本題である。
+
+%\begin{eqnarray}
+%  H &=& \frac{1}{2m} \bigl( mv \bigr)^2 + q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr)
+%  \\
+%\end{eqnarray}
 
 \end{document}
