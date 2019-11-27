@@ -422,11 +422,50 @@ $\bm{I} \cdot \bm{S}$は$\bm{F} = \bm{I}+\bm{J}$(今、$\bm{L}=0$より$\bm{F}=\
 \end{eqnarray}
 このように、荷電粒子のハミルトニアンを求めることができた。
 
-さて、長々とハミルトニアンを導出してきたが、ここからが本題である。
+%さて、長々とハミルトニアンを導出してきたが、ここからが本題である。
 
 %\begin{eqnarray}
 %  H &=& \frac{1}{2m} \bigl( mv \bigr)^2 + q \Bigl( \phi - \bm{v} \cdot \bm{A} \Bigr)
 %  \\
 %\end{eqnarray}
+
+\section*{◆第8章 実験技術◆}
+\subsection*{8.13 色素レーザーの調節}
+\paragraph{(a) 大気圧の変化による発振周波数の調整\\}
+電磁波の公式より
+\begin{equation}
+  \nu = \frac{c}{\lambda}
+\end{equation}
+ここで周波数が大気圧の変化によって$\nu$から$\delta \nu$変化したとする。その時、公式を用いて以下のように表される。
+\begin{equation}
+  \nu + \delta \nu = \frac{c}{\lambda + \delta \lambda}
+\end{equation}
+色素レーザーは光共振器で構成している。その共振条件は共振器長$L$と媒質の屈折率$n$、整数$m$を用いて
+\begin{equation}
+  m \frac{\lambda}{2} = n L
+\end{equation}
+と表すことができる。大気圧の変化、即ち大気の密度変化は屈折率の変化を引き起こす。
+大気圧変化により屈折率が$\delta n$変化したとすると、共振条件は以下のように表される。
+\begin{equation}
+  m \frac{\lambda + \delta \lambda}{2} = \bigr(n + \delta n\bigl) L
+\end{equation}
+これを整理して
+\begin{equation}
+  \frac{1}{\lambda + \delta \lambda} = \frac{m}{2} \frac{1}{\bigr(n + \delta n\bigl) L}
+\end{equation}
+これを(95)式に代入すると
+
+\begin{eqnarray}
+  \nu + \delta \nu &=& c \frac{m}{2} \frac{1}{\bigr(n + \delta n\bigl) L}\\
+  \nu + \delta \nu &=& c \frac{m}{2} \frac{1}{nL} \frac{1}{\bigr(1 + \frac{\delta n}{n}\bigl) }\\
+  \nu + \delta \nu &=&  \frac{c}{\lambda} {\bigr(1 + \frac{\delta n}{n}\bigl)}^{-1}\\
+  \nu + \delta \nu &=&  \nu {\bigr(1 + \frac{\delta n}{n}\bigl)}^{-1}\\
+  \nu + \delta \nu &\simeq&   \nu \bigr(1 - \frac{\delta n}{n}\bigl)\\
+  \delta \nu &\simeq& - \nu \bigr(\frac{\delta n}{n}\bigl)
+\end{eqnarray}
+ここで、真空の屈折率は$n=1$なので
+\begin{equation}
+  \delta \nu \simeq - \nu \delta n
+\end{equation}
 
 \end{document}
